@@ -22,6 +22,7 @@ void main() => runApp( const MiPrimeraApp());
       //el Material app me pide un parametro title para mi nombre interno de la app
       //y un widget home que es el que llama y crea el widget de inicio de mi aplicacion privada q llame inicio
       //o puede usar otro nombre
+      debugShowCheckedModeBanner: false,
       title: 'Mi Primera App',
       home: Inicio(),
      );
@@ -146,8 +147,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     final elevatedButtonStyle = ElevatedButton.styleFrom(
+      
       primary: Color.fromARGB(255, 57, 4, 114),
-      onPrimary: Color.fromARGB(255, 200, 216, 22)
+      onPrimary: Color.fromARGB(255, 229, 230, 225),
+      shadowColor: Color.fromARGB(255, 134, 15, 7),
+      elevation: 10,
+      side: BorderSide(color: Color.fromARGB(255, 90, 68, 229), width: 1),
+      shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
+   
+      textStyle: TextStyle(
+          color: Color.fromARGB(255, 114, 5, 10),
+          fontSize: 20,
+          fontStyle: FontStyle.normal
+      ),
     );
     return Scaffold(
       appBar: AppBar(
@@ -161,20 +173,29 @@ class _MyHomePageState extends State<MyHomePage> {
             
             SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            
+             
               child:    Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+              
               children: <Widget>[
                 // Content of my Row
 
+              
                 //Item 1/4
                 ElevatedButton(
+                   
+                  
                    style: elevatedButtonStyle,
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
+                   
+                 // child: Container(
+                    
+                    
+                   // padding: const EdgeInsets.all(30),
                     
                     child: const Text("OFERTA DE SERVICIO"),
-                  ),
+                    
+                 // ),
+                   
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -182,14 +203,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
-                //Item 2/4
+                
+               //Item 2/4
+                 
                 ElevatedButton(
                    style: elevatedButtonStyle,
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
+                 // child: Container(
+                    
+                   // padding: const EdgeInsets.all(30),
                    
                     child: const Text("NUESTROS CONTACTOS"),
-                  ),
+                 // ),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -199,14 +223,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
 
                 //Item 3/4
-
+                 
                 ElevatedButton(
                    style: elevatedButtonStyle,
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
+                 // child: Container(
+                     
+                   // padding: const EdgeInsets.all(30),
                     
                     child: const Text("REFERENCIAS"),
-                  ),
+                //  ),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -214,15 +239,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
+                
 
                 //Item 4/4
                 ElevatedButton(
                    style: elevatedButtonStyle,
-                  child: Container(
-                    padding: const EdgeInsets.all(15),
+                // child: Container(
+                     
+                   // padding: const EdgeInsets.all(30),
                     
                     child: const Text("SALIR"),
-                  ),
+                //  ),
                   onPressed: () {
                     Navigator.push(
                       context,
