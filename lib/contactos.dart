@@ -16,7 +16,9 @@ class Contacto extends StatefulWidget {
 
 class _HomePage extends State<Contacto> {
    primero() async {
-      Response respuesta=await http.get(Uri.parse("https://dummyjson.com/products/categories"));
+     //Response respuesta=await http.get(Uri.parse("https://dummyjson.com/products/categories"));   
+     Response respuesta=await http.get(Uri.parse("https://flutterrmlendezf.000webhostapp.com/flutter%20seraca/api_seraca.php"));
+
       return jsonDecode(respuesta.body);
   }
 

@@ -22,7 +22,7 @@ class _HomePage extends State<Referencia> {
 
   Future<List<Nombres>> _primero() async {
     final respuesta = await http.get(Uri.parse('https://api.giphy.com/v1/gifs/trending?api_key=PmYoyrNJUlptKppYJNhajYVh7S70R2xk&limit=10&rating=g'));
-
+    //final respuesta = await http.get(Uri.parse('https://flutterrmlendezf.000webhostapp.com/flutter%20seraca/api_seraca.php'));
     List<Nombres> informacion = [];
 
     if (respuesta.statusCode == 200) {

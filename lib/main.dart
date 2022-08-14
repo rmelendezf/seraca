@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_seraca_1/pdf.dart';
-
 import 'contactos.dart';
 import 'respaldo.dart';
+import 'api_vigilantes.dart';
 
 
 //primero debemos importar los paquetes
-
 void main() => runApp( const MiPrimeraApp());
  //la primera funcion main es la que llama a el primer widget de todo el programa; en mi caso MiprimeraAplicacion
  //a traves del metodo runApp
  //ahora debemos crear ese primer widget
 
- class MiPrimeraApp extends StatelessWidget {
+class MiPrimeraApp extends StatelessWidget {
    const MiPrimeraApp({Key? key}) : super(key: key);
  
    @override
@@ -27,101 +26,79 @@ void main() => runApp( const MiPrimeraApp());
       home: Inicio(),
      );
    }
- }
+}
 // importante saber la diferencia y en que momento usar un StatelessWidget y un StateFullWidget
 
- class Inicio extends StatefulWidget {
+class Inicio extends StatefulWidget {
    const Inicio({Key? key}) : super(key: key);
  
    @override
    State<Inicio> createState() => _InicioState();
- }
+}
  
- class _InicioState extends State<Inicio> {
-   @override
-   Widget build(BuildContext context) {
+class _InicioState extends State<Inicio> {
+  @override
+  Widget build(BuildContext context) {
     final elevatedButtonStyle = ElevatedButton.styleFrom(
-      primary: Color.fromARGB(255, 57, 4, 114),
-      onPrimary: Color.fromARGB(255, 200, 216, 22)
+      primary: const Color.fromARGB(255, 57, 4, 114),
+      onPrimary: const Color.fromARGB(255, 200, 216, 22)
     );
 
-     return Scaffold(
-      //a diferencia del materialApp el Scaffold nos pide un appbar
-      //el AppBarr es la franja superior de la pantalla y nos pide el tietle
+    return Scaffold(
+     
       appBar: AppBar(
         title: const Text('SERENOS   ACARIGUA, C.A.'),
 
       ),
-       
-      //tambien nos pide un body y al body podemos colocarle un center
-      //el center y algunos otros widget tienen la propiedad de tener widget hijos (child)
+     
       backgroundColor: Colors.grey[300],
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //asi como el column hay muchos widget quw aceptan varios hijos children
-        //como el ListView que permite navegar entre las imagenes
-        //podemos usar funciones de MainAxisAligment y MainAxisize
+     
         children: [
-          const Text('BIENVENIDOS'),
+          const Text('BIENVENIDOS', style: TextStyle(color: Color.fromARGB(255, 7, 1, 57), fontSize: 30.0, fontWeight: FontWeight.bold),),
           Container(
             //agregregue una imagen
             padding: const EdgeInsets.all(50.0),
             child: Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiNtFSaO6Hsk-i8FeqWylxl_F9jf-99-x6iA&usqp=CAU'
-             ),
+            ),
             
           ),
           
-           Row( 
-            
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+          Row( 
 
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+               // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
 
-                  ElevatedButton(
+              ElevatedButton(
                     style: elevatedButtonStyle,
-                    child: Text('CONTINUAR'),
-                   onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyHomePage(title: 'REGRESAR',)),
-                );
-              },
-                  ),
-
-                  ElevatedButton(
-                    style: elevatedButtonStyle,
-                    child: Text('SALIR'),
+                    child: const Text('CONTINUAR'),
                     onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => TerceraRoute()),
-                    );
-                  },
-                  ), 
+                     Navigator.push(
+                        context,
+                         MaterialPageRoute(builder: (context) => const MyHomePage(title: 'REGRESAR',)),
+                     );
+                   },
+              ),
 
-
-                ], 
-       
-             
-              )
-
-         ],
-
-
-            
-      ),
-
-           
-            
-            
-            
-      );
-          
-       
-        
-      
-   }
- }
+              ElevatedButton(
+                    style: elevatedButtonStyle,
+                    child: const Text('SALIR'),
+                    onPressed: () {
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(builder: (context) => TerceraRoute()),
+                     );
+                   },
+              ), 
+            ], 
+          )
+        ],        
+      ), 
+    );
+  } // Widget build
+} // _InicioState
  
 class MyHomePage extends StatefulWidget {
   final String title;
@@ -137,25 +114,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
  
-  
   String mensaje = "REGRESAR";
-
   
-  
-
   @override
   Widget build(BuildContext context) {
 
     final elevatedButtonStyle = ElevatedButton.styleFrom(
       
-      primary: Color.fromARGB(255, 57, 4, 114),
-      onPrimary: Color.fromARGB(255, 229, 230, 225),
-      shadowColor: Color.fromARGB(255, 134, 15, 7),
+      primary: const Color.fromARGB(255, 57, 4, 114),
+      onPrimary: const Color.fromARGB(255, 229, 230, 225),
+      shadowColor: const Color.fromARGB(255, 134, 15, 7),
       elevation: 10,
-      side: BorderSide(color: Color.fromARGB(255, 90, 68, 229), width: 1),
+      side: const BorderSide(color: Color.fromARGB(255, 90, 68, 229), width: 1),
       shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5))),
    
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
           color: Color.fromARGB(255, 114, 5, 10),
           fontSize: 20,
           fontStyle: FontStyle.normal
@@ -167,36 +140,30 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       backgroundColor: Colors.grey[350],
       body: Center(
-        child: Column(
+       child: 
+        Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            
+          children: <Widget>[         
+                               
             SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-             
+              scrollDirection: Axis.horizontal,             
               child:    Row(
 
-              
-              children: <Widget>[
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+               //crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
                 // Content of my Row
-
               
                 //Item 1/4
-                ElevatedButton(
-                   
+                ElevatedButton(                   
                   
-                   style: elevatedButtonStyle,
+                   style: elevatedButtonStyle,                 
+                                
                    
-                 // child: Container(
-                    
-                    
-                   // padding: const EdgeInsets.all(30),
-                    
-                    child: const Text("OFERTA DE SERVICIO"),
-                    
-                 // ),
-                   
-                  onPressed: () {
+                   // padding: const EdgeInsets.all(30),                   
+                    child: const Text("OFERTA DE SERVICIO",style: TextStyle(fontWeight: FontWeight.bold)),                
+             
+                    onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => PDF(enlace: 'https://flutterrmlendezf.000webhostapp.com/flutter%20seraca/OFERTA%20DE%20SERVICIO%20ALIVENSA.pdf')),
@@ -208,16 +175,16 @@ class _MyHomePageState extends State<MyHomePage> {
                  
                 ElevatedButton(
                    style: elevatedButtonStyle,
-                 // child: Container(
-                    
+                                    
                    // padding: const EdgeInsets.all(30),
                    
-                    child: const Text("NUESTROS CONTACTOS"),
-                 // ),
+                    child: const Text("NUESTROS CONTACTOS",style: TextStyle(fontWeight: FontWeight.bold)),
+                
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Contacto(cadena: 'https://dummyjson.com/products/categories')),
+                    //  MaterialPageRoute(builder: (context) => Contacto(cadena: 'https://dummyjson.com/products/categories')),
+                       MaterialPageRoute(builder: (context) => Contacto(cadena: 'https://flutterrmlendezf.000webhostapp.com/flutter%20seraca/OFERTA%20DE%20SERVICIO%20ALIVENSA.pdf')),
                     );
                   },
                 ),
@@ -230,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
                      
                    // padding: const EdgeInsets.all(30),
                     
-                    child: const Text("REFERENCIAS"),
+                    child: const Text("REFERENCIAS",style: TextStyle(fontWeight: FontWeight.bold)),
                 //  ),
                   onPressed: () {
                     Navigator.push(
@@ -244,12 +211,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 //Item 4/4
                 ElevatedButton(
                    style: elevatedButtonStyle,
-                // child: Container(
-                     
+                                    
                    // padding: const EdgeInsets.all(30),
                     
-                    child: const Text("SALIR"),
-                //  ),
+                    child: const Text("SALIR",style: TextStyle(fontWeight: FontWeight.bold)),
+              
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -258,26 +224,60 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ],
-            ),
               ),
+            ),
+          
             
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[Expanded(child: 
-                 Container(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: <Widget>[
+
+                Container(
+
+               // Expanded(
+                  child: 
                   
-            //agregregue una imagen
-            padding: const EdgeInsets.all(10.0),
-            child: Image.network('https://media.giphy.com/media/lX7evzxckskndyUAUv/giphy.gif'
+                    //agregregue una imagen
+                   //padding: const EdgeInsets.all(10.0),
+                  // Expanded(
+                   // child: 
+                    Image.network('https://media.giphy.com/media/lX7evzxckskndyUAUv/giphy.gif'
+                   ),
+                 // ) 
+                   ),               
+                ],
              ),
-                 )
-            
-              )
-              ],
-            ),
-          ],
+
+             //boton de administrador
+                
+               ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(255, 57, 4, 114),
+                    onPrimary: Color.fromARGB(255, 229, 230, 225),
+                    shadowColor: Color.fromARGB(255, 134, 15, 7),
+                    elevation: 10,
+                    side: BorderSide(color: Color.fromARGB(255, 90, 68, 229), width: 2),
+                    shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),   
+                    textStyle: const TextStyle(
+                     color: Color.fromARGB(255, 114, 5, 10),
+                     fontSize: 20,
+                     fontStyle: FontStyle.normal
+                   ),
+                  ),
+                                      
+                   // padding: const EdgeInsets.all(30),                    
+                  child: const Text("ADMINISTRACION", style: TextStyle(color: Color.fromARGB(255, 211, 234, 7), fontSize: 10.0, fontWeight: FontWeight.bold)),
+                    
+                  onPressed: () { 
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Referencia_api(encadena: 'http://localhost/seraca/api_seraca_local.php')),
+                    );       
+                  },
+                ),
+         ],
         ),
-      ),
+     ),
     );
   }
 }
@@ -309,7 +309,7 @@ class TerceraRoute extends StatelessWidget {
       appBar: AppBar(
         title: const Text("GRACIAS  POR  PREFERIRNOS", style: TextStyle(fontSize: 16)),
       ),
-      body: Center(
+      body: const Center(
         child:  Image(
                image: NetworkImage('https://media.giphy.com/media/kNc8zFSkl4W40Cn5OV/giphy.gif'),
                height: 300,
