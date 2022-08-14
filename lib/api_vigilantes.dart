@@ -10,17 +10,17 @@ import 'nombre_vigilante.dart';
 
 /// Represents Homepage for Navigation
 // ignore: camel_case_types
-class Referencia_api extends StatefulWidget {
+class Api_vigilantes extends StatefulWidget {
   final String encadena;
 
-  const Referencia_api({super.key, required this.encadena});
+  const Api_vigilantes({super.key, required this.encadena});
   @override
   // ignore: library_private_types_in_public_api
   _HomePage createState() => _HomePage();
 }
 
 
-class _HomePage extends State<Referencia_api> {
+class _HomePage extends State<Api_vigilantes> {
  
   late Future<List<Nombres_api>> _listaNomb;
     Future<List<Nombres_api>> _primero() async {
@@ -67,9 +67,10 @@ class _HomePage extends State<Referencia_api> {
          
          Row(
          // mainAxisAlignment: MainAxisAlignment.spaceAround,
-         crossAxisAlignment: CrossAxisAlignment.start,
+         mainAxisSize: MainAxisSize.max,
          children: [
          // Expanded(child: 
+          
           IconButton(
             icon: const Icon(Icons.add,semanticLabel: 'AGREGAR', ),
             focusColor: Color.fromARGB(255, 75, 3, 69),
@@ -85,6 +86,7 @@ class _HomePage extends State<Referencia_api> {
             onPressed: () {},         
           ),
          // ),
+          SizedBox(width: 20 ,),
 
          // Expanded(child:
           IconButton(
@@ -95,7 +97,7 @@ class _HomePage extends State<Referencia_api> {
             iconSize: 40,
             padding: const EdgeInsets.all(10),     
             splashRadius: 45, 
-            tooltip: 'Buscar el Lista',   
+            tooltip: 'Buscar en Lista',   
             hoverColor: Color.fromARGB(255, 106, 6, 80),
             disabledColor: Colors.black,
             splashColor: Color.fromARGB(255, 5, 104, 54),           

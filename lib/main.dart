@@ -170,6 +170,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
+
+                SizedBox(width: 10 ,),
                 
                //Item 2/4
                  
@@ -189,6 +191,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
 
+                SizedBox(width: 10 ,),
+
                 //Item 3/4
                  
                 ElevatedButton(
@@ -206,6 +210,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
+
+                SizedBox(width: 10 ,),
                 
 
                 //Item 4/4
@@ -271,7 +277,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () { 
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Referencia_api(encadena: 'http://localhost/seraca/api_seraca_local.php')),
+                      MaterialPageRoute(builder: (context) => Api_vigilantes(encadena: 'http://localhost/seraca/api_seraca_local.php')),
                     );       
                   },
                 ),
