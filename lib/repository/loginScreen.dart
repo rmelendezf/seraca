@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_seraca_1/api_vigilantes.dart';
 //import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'profilePage.dart';
+//import 'profilePage.dart';
 import 'registroPage.dart';
+
+
 
 
 class LoginScreen extends StatefulWidget {
@@ -15,9 +18,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
  String _nombre = '';
  String _password = '';
- TextEditingController  _usserPasswordController = TextEditingController();
+ TextEditingController  _usserController = TextEditingController();
+ TextEditingController  _passwordController = TextEditingController();
+ 
  bool _isLoggedIn = false;
- bool passwordVisible = false;
+ bool passwordVisible = true;
 
  //GoogleSingIn _googleSingIn = GoogleSingIn(scopes: ['email']);
 
@@ -52,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               Text('Username'),
               TextField(
+                controller: _usserController,
                 decoration: const InputDecoration(
                   hintText: 'Username',
                   
@@ -67,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Text('Password'),
               TextFormField(
                 keyboardType: TextInputType.visiblePassword,
-                controller: _usserPasswordController,
+                controller: _passwordController,
                 obscureText: passwordVisible,
                 maxLength: 10,
                 decoration: InputDecoration(
@@ -110,13 +116,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextButton(                    
                     child: Text('Log In'), style: TextButton.styleFrom( padding: EdgeInsets.fromLTRB(10, 10, 10, 10), primary: Colors.teal, ),
                     onPressed: () {
-                      if (_nombre == 'administrador'){
-                        if (_password == '18671986') {
-                      final route = MaterialPageRoute(builder:(context) {
-                        return ProfilePage();
-                          });
-                      Navigator.push(context, route);
-                      }} else {
+
+                      _nombre = _usserController.text;
+                      _password = _passwordController.text;
+
+
+                      if (_nombre =='ramon' && _password == '18671986'){
+                        Future.delayed(Duration(seconds: 3)).then((value) => { 
+                           Navigator.push(
+                             context,                           
+                             MaterialPageRoute(
+                               builder: (context) => Api_vigilantes(encadena: 'http://localhost/seraca/api_seraca_local.php'),
+                             ),
+                           ) 
+                          }
+                        );
+                      } 
+                      else {
                         print ('error usuario');
                       };
                     }, 

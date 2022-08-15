@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_seraca_1/pdf.dart';
+import 'package:flutter_seraca_1/repository/loginScreen.dart';
 import 'contactos.dart';
 import 'respaldo.dart';
-import 'api_vigilantes.dart';
+//import 'api_vigilantes.dart';
+
 
 
 //primero debemos importar los paquetes
@@ -114,7 +116,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
  
-  String mensaje = "REGRESAR";
+  String mensaje = "INICIO";
   
   @override
   Widget build(BuildContext context) {
@@ -277,7 +279,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () { 
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Api_vigilantes(encadena: 'http://localhost/seraca/api_seraca_local.php')),
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                     // MaterialPageRoute(builder: (context) => Api_vigilantes(encadena: 'http://localhost/seraca/api_seraca_local.php')),
                     );       
                   },
                 ),
