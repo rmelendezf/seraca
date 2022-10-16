@@ -11,13 +11,13 @@ class Contacto extends StatefulWidget {
 
   const Contacto({super.key, required this.cadena});
   @override
-  _HomePage createState() => _HomePage();
+  HomePage createState() => HomePage();
 }
 
-class _HomePage extends State<Contacto> {
+class HomePage extends State<Contacto> {
    primero() async {
-     //Response respuesta=await http.get(Uri.parse("https://dummyjson.com/products/categories"));   
-     Response respuesta=await http.get(Uri.parse("https://flutterrmlendezf.000webhostapp.com/flutter%20seraca/api_seraca.php"));
+     Response respuesta=await http.get(Uri.parse("https://dummyjson.com/products/categories"));   
+   //  Response respuesta=await http.get(Uri.parse("https://flutterrmlendezf.000webhostapp.com/flutter%20seraca/api_seraca.php"));
 
       return jsonDecode(respuesta.body);
   }

@@ -35,9 +35,9 @@ Future  primero() async {
 final ByteData imageData = await NetworkAssetBundle(Uri.parse(widget.enlace)).load("");
 final Uint8List bytes = imageData.buffer.asUint8List();
 
-var respuesta=await http.get(Uri.parse('https://reqres.in/api/products/3'));
-Map datos = jsonDecode(respuesta.body);
-print(datos);
+//var respuesta=await http.get(Uri.parse('https://reqres.in/api/products/3'));
+//Map datos = jsonDecode(respuesta.body);
+//print(datos);
 //datos['data'].forEach((key, value) {
  // print(value['name']);
 //}

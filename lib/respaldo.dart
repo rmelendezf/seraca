@@ -1,23 +1,17 @@
 import 'dart:convert';
-
-//import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
-//import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:http/http.dart' as http;
 import 'nombres.dart';
 
-/// Represents Homepage for Navigation
 class Referencia extends StatefulWidget {
   final String encadena;
 
   const Referencia({super.key, required this.encadena});
   @override
-  _HomePage createState() => _HomePage();
+  HomePage createState() => HomePage();
 }
 
-class _HomePage extends State<Referencia> {
+class HomePage extends State<Referencia> {
   late Future<List<Nombres>> _listaNomb;
 
   Future<List<Nombres>> _primero() async {
@@ -52,7 +46,7 @@ class _HomePage extends State<Referencia> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('REFERENCIAS'),
+        title: const Text('REGRESAR'),
       ),
       body: FutureBuilder(
           future: _listaNomb,
